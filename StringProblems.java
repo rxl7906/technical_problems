@@ -112,6 +112,31 @@ public class StringProblems {
 			System.out.println(v.get(i));
 		}
 	}*/
+	
+	// Hackerrank: Make it Anagram
+	static int makeAnagram(String s1, String s2){
+		char[] a = s1.toCharArray();
+        char[] b = s2.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        int i = 0, j = 0, c = 0;
+        while(i < a.length && j < b.length){
+            if(a[i] == b[j]){
+                if(i < a.length)
+                    i++;
+                if(j < b.length)
+                    j++;
+            } else if(a[i] > b[j]){
+                j++;
+                c++;
+            } else if(a[i] < b[j]){
+                i++;
+                c++;
+            }
+        }
+        c+= (a.length-i) + (b.length-j);
+        return c;
+	}
 
 	public static void main(String args[]){
 		//System.out.println(reverseString("Animals"));
