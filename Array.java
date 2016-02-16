@@ -341,6 +341,12 @@ public class Array {
 		return 0;
 	}
 	
+	// EOPI Problem 6.1
+	// Write a function that takes an array A of length n and an index i into A,
+	// and rearranges the elements such that all elements less than A[i] appear first,
+	// followed by elements equal to A[i], followed by elements greater than A[i]. 
+	//static int[] 
+	
 	public static void main(String args[]){
 		/*int[] a = new int[] {2,4,3,6,7,9,13,17,14,18,19};
 		int[] b = partition(a);
