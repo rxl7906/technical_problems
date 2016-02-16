@@ -82,9 +82,10 @@ public class Array {
 		return a;
 	}
 	
+	// Given an array of integers, find the maximum product of
+	// any two integers in the array.
 	// test cases:
 	// [5,8,0,9,1]
-	// find the max product of two integers
 	public static int maxProduct(int[] a){
 		int high1 = Integer.MIN_VALUE;
 		int high2 = Integer.MIN_VALUE;
@@ -146,6 +147,7 @@ public class Array {
 		return ar;
 	}
 	
+	// Given array of integers, find the duplicates
 	static void findDuplicate(int[] a){
 		int repeat = 0;
 		/*for(int i = 0; i < a.length; i++){
@@ -198,6 +200,7 @@ public class Array {
 		System.out.println(maxSecond);
 	}
 	
+	// find the second minimum in array
 	static void secondMin(int[] a){
 		int minOne = Integer.MAX_VALUE;
 		int minSecond = Integer.MAX_VALUE;
