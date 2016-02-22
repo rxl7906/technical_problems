@@ -3,19 +3,34 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+/**
+* <h1>Array functions</h1>
+* The Array class implements methods that manipulate 
+* integer arrays. 
+* <p>
+* 
+* @author  Robin Li
+* @since   2015-09-05
+*/
 
 public class Array {
 	
-	// Problem: 
-	// - Partition integer array with odd integers to left of array; even integers on right
-	// First Solution:
-	// Complexity:
-	// - Time: O(n) (one pass thru array a, one pass adding to array b)
-	// - Space: O(n) (array b)
-	// Second Solution: (In-place solution)
-	// - Time: O(n) (one pass thru array a)
-	// - Space: O(1) (constant space)
-	static int[] partition(int[] a){
+	/** 
+	 * Partition integer array with odd integers to left of array; even integers on right
+	 * <p>
+	 * First Solution:
+	 * Complexity:
+	 * - Time: O(n) (one pass thru array a, one pass adding to array b)
+	 * - Space: O(n) (array b)
+	 * <p>
+	 * Second Solution: (In-place solution)
+	 * - Time: O(n) (one pass thru array a)
+	 * - Space: O(1) (constant space)
+	 * 
+	 * @param	array of integers to be partitioned
+	 * @return	array of odd integers partitioned to the left and even integers to the right
+	 */
+	public static int[] partition(int[] a){
 		/*int[] b = new int[a.length];
 		int c = 0;
 		for(int i = 0; i < a.length; i++){
@@ -33,8 +48,8 @@ public class Array {
 		return b;*/
 		int l = 0, r = a.length-1;
 		while(l < r){
-			while(a[l]%2==0 && l < r) l++;
-			while(a[r]%2==1 && l < r) r--;
+			while(a[l]%2==1 && l < r) l++;
+			while(a[r]%2==0 && l < r) r--;
 			if(l < r){
 				int tmp = a[l];
 				a[l] = a[r];
@@ -46,14 +61,18 @@ public class Array {
 		return a;
 	}
 	
-	// Problem:
-	// - Find all repeating elements in array; print them
-	// First Solution:
-	// Complexity:
-	// - Time: O(n)
-	// - Space: O(n)
-	// Improvement:
-	// - Solve in O(n) time and O(1) constant space
+	/** 
+	 * Problem:
+	 * - Find all repeating elements in array; print them
+	 * First Solution:
+	 * Complexity:
+	 * - Time: O(n)
+	 * - Space: O(n)
+	 * Improvement:
+	 * - Solve in O(n) time and O(1) constant space
+	 * 
+	 * @param	array of integers
+	 */
 	public static void findRepeats(int[] a){
 		int[] c = new int[a.length];
 		for(int i = 0; i < a.length; i++){
@@ -71,33 +90,44 @@ public class Array {
 		}*/
 	}
 	
-	// Problem:
-	// - Remove duplicates in array
-	// First Solution:
-	// Complexity:
-	// - Time: O(n)
-	// - Space: O(n)
-	// Improvement:
-	// Merge sort (O(nlogn) time) then pass thru array?
-	static void removeDuplicates(int[] a){
+	/**
+	 * Problem:
+	 * - Remove duplicates in array
+	 * First Solution:
+	 * Complexity:
+	 * - Time: O(n)
+	 * - Space: O(n)
+	 * Improvement:
+	 * Merge sort (O(nlogn) time) then pass thru array?
+	 * 
+	 * @param	integer array
+	 * @return	nothing
+	 */
+	public static void removeDuplicates(int[] a){
 		Set<Integer> s = new HashSet<Integer>();
 		for(int i : a) s.add(i);
 		for(int i: s) System.out.print(i+" ");
 	}
 	
-	// Problem:
-	// - Given string of digits and integer n, delete n characters from string s.t. result string
-	// contains minimal number representation. 
-	// Test Case:
-	// - Input: s = "121198", n = 2
-	// - Output: "1118"
-	// - Input: s = "4325043", n = 3
-	// - Output: "2043"
-	// - Input: s = "765028321", n = 5
-	// - Output: "0221"
-	// Status:
-	// IN PROGRESS
-	static String buildLowestNumber(String s, int n){
+	/**
+	 * Problem:
+	 * - Given string of digits and integer n, delete n characters from string s.t. result string
+	 * contains minimal number representation.
+	 * Test Case:
+	 * - Input: s = "121198", n = 2
+	 * - Output: "1118"
+	 * - Input: s = "4325043", n = 3
+	 * - Output: "2043"
+	 * - Input: s = "765028321", n = 5
+	 * - Output: "0221"
+	 * Status:
+	 * IN PROGRESS
+	 * 
+	 * @param s
+	 * @param n
+	 * @return
+	 */
+	public static String buildLowestNumber(String s, int n){
 		String res = "";
 		if(n == 0) return res+s;
 		int len = s.length();
@@ -119,12 +149,17 @@ public class Array {
 		return res;
 	}
 	
-	// Problem:
-	// - Reverse integer array
-	// First Solution:
-	// Complexity:
-	// - Time: O(n) (half a pass)
-	// - Space: O(1) (constant space)
+	/**
+	 * Problem:
+	 * - Reverse integer array
+	 * First Solution:
+	 * Complexity:
+	 * - Time: O(n) (half a pass)
+	 * - Space: O(1) (constant space)
+	 * 
+	 * @param integer array
+	 * @return reversed integer array
+	 */
 	public static int[] reverse(int[] a){
 		for(int i = 0; i < a.length/2; i++){
 			int tmp = a[i];
@@ -172,7 +207,7 @@ public class Array {
 	}
 	
 	// given 2 sorted arrays and integer k, merge lists up to a max of k elements
-	static int[] getLeastkNums(int[] ar1, int[] ar2, int k){
+	public static int[] getLeastkNums(int[] ar1, int[] ar2, int k){
 		int m = ar1.length, n = ar2.length, a = 0, b = 0, len = 0, i = 0;
 		if(k > (m+n)){ // if k is greater than # of integers in array
 			len = m+n;
@@ -210,7 +245,7 @@ public class Array {
 	// Complexity:
 	// - Time: O(n) (one pass thru a, one pass thru hashmap)
 	// - Space: O(n) (hashmap space)
-	static void oddNumber(int[] a){
+	public static void oddNumber(int[] a){
 		HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
 		for(int i : a){
 			if(hm.containsKey(i)) hm.put(i, hm.get(i)+1);
@@ -224,7 +259,7 @@ public class Array {
 	}
 	
 	// Find second maximum integer in array
-	static void secondMax(int[] a){
+	public static void secondMax(int[] a){
 		int maxOne = Integer.MIN_VALUE;
 		int maxSecond = Integer.MIN_VALUE;
 		for(int i : a){
@@ -239,7 +274,7 @@ public class Array {
 	}
 	
 	// Find the second minimum in array
-	static void secondMin(int[] a){
+	public static void secondMin(int[] a){
 		int minOne = Integer.MAX_VALUE;
 		int minSecond = Integer.MAX_VALUE;
 		for(int i : a){
@@ -266,7 +301,7 @@ public class Array {
 	}*/
 	// Problem:
 	// - Find missing integers from integer array
-	static void findMissing(int[] a, int lower, int upper){
+	public static void findMissing(int[] a, int lower, int upper){
 		/*ArrayList<Integer> ar = new ArrayList<Integer>();
 		Arrays.sort(a);
 		int expected = 0, i = 0;
@@ -299,7 +334,7 @@ public class Array {
 	
 	// Problem: 
 	// - Determine if the 2 given integer arrays have same set of integers
-	static boolean sameIntegers(int[] a, int[] b){
+	public static boolean sameIntegers(int[] a, int[] b){
 		HashSet<Integer> hs = new HashSet<Integer>();
 		if(a.length < b.length){
 			for(int i : a) hs.add(i);
@@ -319,7 +354,7 @@ public class Array {
 	
 	// find non repeating element in an array
 	// int[] a = new int[]{3,4,1,3,1,7,2,2,4};
-	static int nonRepeatingElement(int[] a){
+	public static int nonRepeatingElement(int[] a){
 		int ele = 0;
 		for(int i : a){
 			ele^=i;
@@ -340,7 +375,7 @@ public class Array {
 	// 3rd Solution: (sort, then left/right pointers find pairs)
 	// - Time: O(NlogN) + O(N) (sort + one pass)
 	// - Space: O(1) (constant space)
-	static void findPairs(int[] a, int n){
+	public static void findPairs(int[] a, int n){
 		/*for(int i = 0; i < a.length; i++){
 			for(int j = 0; j < a.length; j++){
 				if(a[i] == a[j]){
@@ -384,7 +419,7 @@ public class Array {
 	// - Given integer array (positive and negative), find the maximum sum of consecutive integers
 	// Status:
 	// IN PROGRESS
-	static int maxSum(int[] a){
+	public static int maxSum(int[] a){
 		// testing commit
 		for(int i : a){
 			System.out.println(i);
@@ -399,9 +434,9 @@ public class Array {
 	//static int[] 
 	
 	public static void main(String args[]){
-		//int[] a = new int[] {2,4,3,6,7,9,13,17,14,18,19};
-		//int[] b = partition(a);
-		//for(int i : b) System.out.print(i+" ");
+		int[] a = new int[] {2,4,3,6,7,9,13,17,14,18,19};
+		int[] b = partition(a);
+		for(int i : b) System.out.print(i+" ");
 		
 		//int[] a = new int[] {5,2,8,3,4,1,8,5,4,2,1,0,0};
 		//int[] a = new int[] {5,4,6,3,5,4};
