@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Vector;
 
 
@@ -137,6 +139,27 @@ public class StringProblems {
         c+= (a.length-i) + (b.length-j);
         return c;
 	}
+	
+	/*
+	 * Problem: (Hackerrank)
+	 * - Given two strings A and B. Find substring that appears in both A and B.
+	 * 
+	 * @param	String s1, String s2
+	 */
+	public static void subString(String s1, String s2){
+		char[] a1 = s1.toCharArray();
+        char[] a2 = s2.toCharArray();
+        HashSet<Character> hs = new HashSet<Character>();
+        for(char c : a1) hs.add(c);
+        for(char ch : a2){
+            if(hs.contains(ch)){
+                System.out.println("YES");
+                return;
+            }
+        }
+        System.out.println("NO");
+	}
+	
 
 	public static void main(String args[]){
 		//System.out.println(reverseString("Animals"));
@@ -144,6 +167,6 @@ public class StringProblems {
 		//System.out.println(compactSpaces("I  am    here     buddy."));
 		
 		//System.out.println(compressString("WWBWWW"));
-		System.out.println(stringComp("WWBWWW"));
+		//System.out.println(stringComp("WWBWWW"));
 	}
 }
