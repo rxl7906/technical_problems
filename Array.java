@@ -433,7 +433,6 @@ public class Array {
 	// followed by elements equal to A[i], followed by elements greater than A[i]. 
 	//static int[] 
 	
-	// testing commit
 	
 	public static void main(String args[]){
 		int[] a = new int[] {2,4,3,6,7,9,13,17,14,18,19};
